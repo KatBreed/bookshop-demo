@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h2 class="text-center">Admin - Add Books</h2>
+        <div class="card p-4 shadow-sm">
+            <form id="bookForm">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Authors</label>
+                        <input type="text" id="authors" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Price</label>
+                        <input type="number" id="price" class="form-control" required step="0.01">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Upload Image</label>
+                        <input type="file" id="imageUpload" class="form-control">
+                    </div>                    
+                    <div class="col-md-12">
+                        <label class="form-label">Description</label>
+                        <textarea id="description" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Publisher</label>
+                        <input type="text" id="publisher" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Publish Date</label>
+                        <input type="date" id="publish_date" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">ISBN</label>
+                        <input type="text" id="isbn" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Pages</label>
+                        <input type="number" id="pages" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Weight</label>
+                        <input type="text" id="weight" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Dimensions</label>
+                        <input type="text" id="dimensions" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">synopsis</label>
+                        <textarea id="synopsis" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary w-100">Add Book</button>
+                </div>
+            </form>
+        </div>
+        
+        <h2 class="text-center mt-4">All Books</h2>
+        <div class="list-group" id="bookList"></div>
+    </div>
+
+    <script>
+        async function fetchBooks() {
+            const res = await fetch('/books');
+            const books = await res.json();
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+        
+            books.forEach(book => {
+                const item = document.createElement('div');
+                item.className = "list-group-item d-flex align-items-center";
+        
+                const img = document.createElement('img');
+                img.src = book.image;
+                img.alt = book.name;
+                img.className = "me-3";
+                img.style.width = "50px";
+        
+                item.innerHTML = `<strong>${book.name}</strong>&nbsp;by&nbsp;${book.authors}`;
+                item.prepend(img);
+                bookList.appendChild(item);
+            });
+        }        
+
+        document.getElementById('bookForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // Handle image upload first
+            const imageInput = document.getElementById('imageUpload');
+            let imagePath = '';
+        
+            if (imageInput.files.length > 0) {
+                const formData = new FormData();
+                formData.append('image', imageInput.files[0]);
+        
+                const uploadRes = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+        
+                const uploadData = await uploadRes.json();
+                if (uploadRes.ok) {
+                    imagePath = uploadData.imagePath;
+                } else {
+                    alert(`❌ Image Upload Error: ${uploadData.error}`);
+                    return;
+                }
+            }
+        
+            // Proceed with book creation
+            const bookData = {
+                name: document.getElementById('name').value,
+                authors: document.getElementById('authors').value.split(',').map(a => a.trim()),
+                description: document.getElementById('description').value,
+                price: parseFloat(document.getElementById('price').value),
+                image: imagePath, // Store uploaded image path
+                publisher: document.getElementById('publisher').value,
+                publish_date: document.getElementById('publish_date').value,
+                ISBN: document.getElementById('isbn').value,
+                pages: parseInt(document.getElementById('pages').value),
+                weight: document.getElementById('weight').value,
+                dimensions: document.getElementById('dimensions').value,
+                synopsis: document.getElementById('synopsis').value,
+            };
+        
+            try {
+                const res = await fetch('/books', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookData),
+                });
+        
+                if (res.ok) {
+                    alert('✅ Book added successfully!');
+                    document.getElementById('bookForm').reset();
+                    fetchBooks();
+                } else {
+                    const errorData = await res.json();
+                    alert(`❌ Error: ${errorData.error}`);
+                }
+            } catch (error) {
+                console.error('❌ Error:', error);
+                alert('❌ Failed to add book.');
+            }
+        });        
+
+        fetchBooks(); 
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
