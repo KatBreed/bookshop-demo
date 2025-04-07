@@ -1,7 +1,7 @@
 [
   {
     "id": 30,
-    "name": "Here One Moment",
+    "title": "Here One Moment",
     "authors": [
       "Liane Moriarty"
     ],
@@ -19,7 +19,7 @@
   },
   {
     "id": 29,
-    "name": "In Too Deep: (Jack Reacher 29)",
+    "title": "In Too Deep: (Jack Reacher 29)",
     "authors": [
       "Lee Child",
       "Andrew Child"
@@ -38,7 +38,7 @@
   },
   {
     "id": 25,
-    "name": "Sunrise on the Reaping",
+    "title": "Sunrise on the Reaping",
     "authors": [
       "Suzanne Collins"
     ],
@@ -56,7 +56,7 @@
   },
   {
     "id": 26,
-    "name": "Nobody's Fool",
+    "title": "Nobody's Fool",
     "authors": [
       "Harlan Coben"
     ],
@@ -74,7 +74,7 @@
   },
   {
     "id": 27,
-    "name": "25 Alive",
+    "title": "25 Alive",
     "authors": [
       "James Patterson",
       "Maxine Paetro"
@@ -93,7 +93,7 @@
   },
   {
     "id": 28,
-    "name": "Madly, Deeply: The Alan Rickman Diaries",
+    "title": "Madly, Deeply: The Alan Rickman Diaries",
     "authors": [
       "Alan Rickman"
     ],
@@ -111,7 +111,7 @@
   },
   {
     "id": 31,
-    "name": "38 Londres Street",
+    "title": "38 Londres Street",
     "authors": [
       "Philippe Sands"
     ],
@@ -129,7 +129,7 @@
   },
   {
     "id": 32,
-    "name": "The Let Them",
+    "title": "The Let Them",
     "authors": [
       "Mel Robbins"
     ],
@@ -147,7 +147,7 @@
   },
   {
     "id": 33,
-    "name": "Shakespeare",
+    "title": "Shakespeare",
     "authors": [
       "Judi Dench"
     ],
@@ -165,7 +165,7 @@
   },
   {
     "id": 35,
-    "name": "The Last Secret Agent",
+    "title": "The Last Secret Agent",
     "authors": [
       "Pippa Latour",
       "Jude Dobson"
@@ -184,7 +184,7 @@
   },
   {
     "id": 36,
-    "name": "Throne of Glass",
+    "title": "Throne of Glass",
     "authors": [
       "Sarah J. Maas"
     ],
@@ -202,7 +202,7 @@
   },
   {
     "id": 34,
-    "name": "One Moment in Time",
+    "title": "One Moment in Time",
     "authors": [
       "Ben Lerwill"
     ],
@@ -220,7 +220,7 @@
   },
   {
     "id": 63,
-    "name": "Nemesis",
+    "title": "Nemesis",
     "authors": [
       "Gregg Hurwitz"
     ],

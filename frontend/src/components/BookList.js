@@ -16,10 +16,10 @@ const BookList = () => {
     setCart(prevCart => {
       const exists = prevCart.find(item => item.id === book.id);
       if (exists) {
-        alert(`${book.name} is already in the cart!`);
+        alert(`${book.title} is already in the cart!`);
         return prevCart;
       }
-      alert(`${book.name} added to cart!`);
+      alert(`${book.title} added to cart!`);
       return [...prevCart, book];
     });
   };  

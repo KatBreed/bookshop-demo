@@ -15,7 +15,7 @@ const BookCard = ({ book, onAddToCart }) => {
         <img
           src = {book.image}
           loading = "lazy"
-          alt={book.name || "Book cover"}
+          alt={book.title || "Book cover"}
           style={{
             width: "150px",
             height: "auto",
@@ -24,7 +24,7 @@ const BookCard = ({ book, onAddToCart }) => {
             margin: "auto"
           }}
         />
-        <p className="text-lg font-bold mt-2"><strong>{book.name || "Untitled"}</strong></p>
+        <p className="text-lg font-bold mt-2"><strong>{book.title || "Untitled"}</strong></p>
         <p className="text-sm text-gray-600">By {book.authors?.join(", ") || "Unknown Author"}</p>
         <p className="text-sm text-gray-600">{book.format || "Format unknown"}</p>
         <p className="font-bold mt-2"><strong>${book.price || "0.00"}</strong></p>

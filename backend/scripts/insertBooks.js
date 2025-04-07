@@ -2,7 +2,7 @@ const { sequelize, Book } = require('../models'); // Ensure you're importing the
 
 const booksData = [
     {
-        name: "Sunrise on the Reaping",
+        title: "Sunrise on the Reaping",
         authors: ["Suzanne Collins"],
         description: "The eagerly awaited fifth Hunger Games book - and second prequel - places fan-favourite Haymitch Abernathy centre stage in an unputdownable tale of danger, action and intrigue set during the fiftieth deadly contest",
         price: 19.99,
@@ -17,7 +17,7 @@ const booksData = [
         synopsis: "When you've been set up to lose everything you love, what is there left to fight for?..."
     },
     {
-        name: "Nobody's Fool",
+        title: "Nobody's Fool",
         authors: ["Harlan Coben"],
         description: "From the mega-selling author of Tell No One and Think Twice comes the electrifying sequel to Fool Me Once...",
         price: 29.99,
@@ -32,7 +32,7 @@ const booksData = [
         synopsis: "A year after the devastating events that took place in Fool Me Once, a secret from former Detective Sami Kierce's college days comes back to haunt him..."
     },
     {
-        name: "25 Alive",
+        title: "25 Alive",
         authors: ["James Patterson", "Maxine Paetro"],
         description: "The Women's Murder Club return in the 25th riveting instalment in Patterson's bestselling series...",
         price: 39.99,
@@ -47,7 +47,7 @@ const booksData = [
         synopsis: "Sergeant Lindsay Boxer's friend and former partner is brutally murdered in San Francisco's Golden Gate Park..."
     },
     {
-        name: "Madly, Deeply: The Alan Rickman Diaries",
+        title: "Madly, Deeply: The Alan Rickman Diaries",
         authors: ["Alan Rickman"],
         description: "The beloved and much-missed actor offers his legion of fans a window into Hollywood glamour...",
         price: 75.00,
@@ -62,7 +62,7 @@ const booksData = [
         synopsis: "Alan Rickman remains one of the most beloved actors of all time across almost every genre..."
     },
     {
-        name: "In Too Deep: (Jack Reacher 29)",
+        title: "In Too Deep: (Jack Reacher 29)",
         authors: ["Lee Child", "Andrew Child"],
         description: "Reacher finds himself the captive of a gang who have some very disturbing plans in this rollercoaster ride of a thriller...",
         price: 38.00,
@@ -77,7 +77,7 @@ const booksData = [
         synopsis: "Reacher had no idea where he was. No idea how he had got there. But someone must have brought him..."
     },
     {
-        name: "Here One Moment",
+        title: "Here One Moment",
         authors: ["Liane Moriarty"],
         description: "From the author of bestselling phenomenon Big Little Lies comes a compelling novel of family and fate, as a mysterious old woman sows confusion and paranoia in the lives of a disparate group of individuals.",
         price: 37.99,
@@ -91,7 +91,7 @@ const booksData = [
         synopsis: "On a plane bound for Sydney the unassuming woman from seat 4D walks down the aisle making unsettling predictions about the passengers.<br>And six strangers find their lives unexpectedly crossing.<br>Each tries to put the experience behind them. But, just weeks later, they can't any longer.<br>Because not believing a prediction is easy, Until it comes true . . ."
     },
     {
-        name: "38 Londres Street",
+        title: "38 Londres Street",
         authors: ["Philippe Sands"],
         description: "Through this captivating blend of memoir, travelogue, detective story, and courtroom drama, the award-winning author of East West Street and The Last Colony chronicles the entwining stories of Chilean dictator Augusto Pinochet and senior SS officer Walther Rauff in a powerful examination of historical atrocities and the search for justice.",
         price: "73.00",

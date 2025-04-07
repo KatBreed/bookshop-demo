@@ -13,8 +13,8 @@
             <form id="bookForm">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label">Name</label>
-                        <input type="text" id="name" class="form-control" required>
+                        <label class="form-label">Title</label>
+                        <input type="text" id="title" class="form-control" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Authors</label>
@@ -88,11 +88,11 @@
         
                 const img = document.createElement('img');
                 img.src = book.image;
-                img.alt = book.name;
+                img.alt = book.title;
                 img.className = "me-3";
                 img.style.width = "50px";
         
-                item.innerHTML = `<strong>${book.name}</strong>&nbsp;by&nbsp;${book.authors}`;
+                item.innerHTML = `<strong>${book.title}</strong>&nbsp;by&nbsp;${book.authors}`;
                 item.prepend(img);
                 bookList.appendChild(item);
             });
@@ -125,7 +125,7 @@
         
             // Proceed with book creation
             const bookData = {
-                name: document.getElementById('name').value,
+                name: document.getElementById('title').value,
                 authors: document.getElementById('authors').value.split(',').map(a => a.trim()),
                 description: document.getElementById('description').value,
                 price: parseFloat(document.getElementById('price').value),
