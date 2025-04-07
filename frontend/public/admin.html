@@ -45,6 +45,10 @@
                         <input type="text" id="isbn" class="form-control">
                     </div>
                     <div class="col-md-6">
+                        <label class="form-label">Format</label>
+                        <input type="text" id="format" class="form-control">
+                    </div>
+                    <div class="col-md-6">
                         <label class="form-label">Pages</label>
                         <input type="number" id="pages" class="form-control">
                     </div>
@@ -57,7 +61,7 @@
                         <input type="text" id="dimensions" class="form-control">
                     </div>
                     <div class="col-md-12">
-                        <label class="form-label">synopsis</label>
+                        <label class="form-label">Synopsis</label>
                         <textarea id="synopsis" class="form-control"></textarea>
                     </div>
                 </div>
@@ -112,7 +116,7 @@
         
                 const uploadData = await uploadRes.json();
                 if (uploadRes.ok) {
-                    imagePath = uploadData.imagePath;
+                    imagePath = uploadData.filename;
                 } else {
                     alert(`❌ Image Upload Error: ${uploadData.error}`);
                     return;
@@ -129,6 +133,7 @@
                 publisher: document.getElementById('publisher').value,
                 publish_date: document.getElementById('publish_date').value,
                 ISBN: document.getElementById('isbn').value,
+                format: document.getElementById('format').value,
                 pages: parseInt(document.getElementById('pages').value),
                 weight: document.getElementById('weight').value,
                 dimensions: document.getElementById('dimensions').value,

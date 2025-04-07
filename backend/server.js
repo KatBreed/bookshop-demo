@@ -20,18 +20,19 @@ if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-// ✅ Serve static files (Frontend and uploaded images)
-app.use(express.static(path.join(__dirname, '../frontend/public')));
-app.use('/uploads', express.static(uploadDir)); // Serve uploaded images
+// ✅ Serve static files (uploaded images)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve uploaded images
 
 // ✅ API Route to upload images
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post('/upload', upload.single('image'), async (req, res) => {
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
     }
-    res.json({ imagePath: `/uploads/${req.file.filename}` });
+    const filePath = `/uploads/${req.file.originalname}`;
+    res.json({ filename: req.file.originalname});
 });
 
+// ✅ API Route to uploaded files
 app.get('/upload', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/public/uploads.html'));
 });
@@ -50,9 +51,9 @@ app.get('/books', async (req, res) => {
   try {
       const books = await Book.findAll();
       const booksWithImagePaths = books.map(book => ({
-          ...book.toJSON(),
-          image: book.image ? `uploads/${book.image}` : null // Ensure correct image path
-      }));
+        ...book.toJSON(),
+        image: book.image ? `http://localhost:5000/uploads/${book.image}` : null    
+    }));    
       res.json(booksWithImagePaths);
   } catch (error) {
       console.error('❌ Error fetching books:', error);
@@ -70,6 +71,11 @@ app.post('/books', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+// ✅ API Route to Admin page
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public/admin.html'));
+  });  
 
 // ✅ Start Server
 app.listen(5000, async () => {
